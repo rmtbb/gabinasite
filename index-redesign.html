@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Enjoy delicious Filipino dishes at Gabina's Cuisine. Visit our local Farmers' Markets or book your next catered event." />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gabina's Cuisine - Authentic Filipino favorites">
+    <meta property="og:description" content="Serving up authentic Filipino favorites like Adobo, Lumpia, Pancit, and more.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/rmtbb/gabinasite/refs/heads/main/imessage-preview.jpg">
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/rmtbb/gabinasite/refs/heads/main/favicon.jpg">
+
+    <title>Gabina's Cuisine</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --red: #e31c25;
+            --red-dark: #b8151c;
+            --white: #ffffff;
+            --gray: #888888;
+            --gray-dark: #1a1a1a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            border-bottom: 1px solid var(--gray-dark);
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--red);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 1.5rem 4rem;
+            text-align: center;
+        }
+
+        .logo {
+            width: 100%;
+            max-width: 280px;
+            margin-bottom: 2rem;
+        }
+
+        .tagline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            letter-spacing: 0.15em;
+            color: var(--red);
+            margin-bottom: 1.5rem;
+        }
+
+        .tribute {
+            max-width: 500px;
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            letter-spacing: 0.1em;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title span {
+            color: var(--red);
+        }
+
+        /* Menu */
+        .menu-grid {
+            display: grid;
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            display: flex;
+            gap: 1rem;
+            background: var(--gray-dark);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .menu-item:hover {
+            transform: translateX(4px);
+            background: #222;
+        }
+
+        .menu-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .menu-item-content {
+            padding: 1rem 1rem 1rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .menu-item h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* Schedule */
+        .schedule-grid {
+            display: grid;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--gray-dark);
+            border-radius: 8px;
+            border-left: 4px solid var(--red);
+        }
+
+        .schedule-day {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--red);
+            min-width: 50px;
+        }
+
+        .schedule-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .schedule-info p {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .schedule-time {
+            margin-left: auto;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            color: var(--white);
+            white-space: nowrap;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial {
+            display: none;
+            padding: 0 1rem;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .testimonial blockquote {
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial cite {
+            font-style: normal;
+            color: var(--red);
+            font-weight: 500;
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gray-dark);
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .dot.active,
+        .dot:hover {
+            background: var(--red);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 1.5rem;
+            border-top: 1px solid var(--gray-dark);
+        }
+
+        .footer-cta {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .footer-contact a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-contact a:hover {
+            color: var(--red);
+        }
+
+        .footer-contact p {
+            margin: 0.5rem 0;
+        }
+
+        /* Desktop */
+        @media (min-width: 768px) {
+            nav {
+                gap: 3rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .menu-item img {
+                width: 140px;
+                height: 140px;
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            section {
+                padding: 6rem 2rem;
+            }
+
+            .menu-item img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#menu">Menu</a>
+    <a href="#markets">Markets</a>
+    <a href="#reviews">Reviews</a>
+</nav>
+
+<header class="hero">
+    <img src="gabina's logo digitized.jpg" alt="Gabina's Cuisine" class="logo">
+    <p class="tagline">Authentic Filipino Cuisine</p>
+    <p class="tribute">
+        A tribute to Gabina — beloved Mother, Grandmother, Wife, and Friend.
+        Her culinary legacy lives on in every dish we serve.
+    </p>
+</header>
+
+<section id="menu">
+    <h2 class="section-title">Our <span>Menu</span></h2>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <img src="chicken adobo plate.jpeg" alt="Chicken Adobo">
+            <div class="menu-item-content">
+                <h3>Chicken Adobo Combo</h3>
+                <p>Tender chicken adobo with lumpia, rice, and pancit.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="bbq combo plate.jpg" alt="BBQ Combo">
+            <div class="menu-item-content">
+                <h3>BBQ Combo Plate</h3>
+                <p>Juicy chicken or pork skewers with rice, pancit, and lumpia.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="pancit plate.jpg" alt="Pancit">
+            <div class="menu-item-content">
+                <h3>Pancit Plate</h3>
+                <p>Savory stir-fried noodles with vegetables.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="vegetable lumpia.jpg" alt="Vegetable Lumpia">
+            <div class="menu-item-content">
+                <h3>Vegetable Lumpia</h3>
+                <p>Crispy spring rolls with seasoned vegetables.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="5pc lumpia.jpeg" alt="5 Piece Lumpia">
+            <div class="menu-item-content">
+                <h3>5 Piece Lumpia</h3>
+                <p>Classic pork and vegetable spring rolls.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="fried chicken skin.jpeg" alt="Chicken Skin">
+            <div class="menu-item-content">
+                <h3>Fried Chicken Skin</h3>
+                <p>Crispy, seasoned chicken skin snack.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="filipino turon.jpeg" alt="Turon">
+            <div class="menu-item-content">
+                <h3>Filipino Turon</h3>
+                <p>Caramelized banana spring roll with jackfruit.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="markets">
+    <h2 class="section-title">Find <span>Us</span></h2>
+    <div class="schedule-grid">
+        <div class="schedule-item">
+            <span class="schedule-day">TUE</span>
+            <div class="schedule-info">
+                <h3>Otay Ranch</h3>
+                <p>Chula Vista</p>
+            </div>
+            <span class="schedule-time">4-8PM</span>
+        </div>
+        <div class="schedule-item">
+            <span class="schedule-day">WED</span>
+            <div class="schedule-info">
+                <h3>Ocean Beach</h3>
+                <p>Newport Ave</p>
+            </div>
+            <span class="schedule-time">4-8PM</span>
+        </div>
+        <div class="schedule-item">
+            <span class="schedule-day">THU</span>
+            <div class="schedule-info">
+                <h3>Linda Vista</h3>
+                <p>San Diego</p>
+            </div>
+            <span class="schedule-time">3-7PM</span>
+        </div>
+        <div class="schedule-item">
+            <span class="schedule-day">FRI</span>
+            <div class="schedule-info">
+                <h3>La Mesa</h3>
+                <p>The Village</p>
+            </div>
+            <span class="schedule-time">3-7PM</span>
+        </div>
+    </div>
+</section>
+
+<section id="reviews">
+    <h2 class="section-title">What People <span>Say</span></h2>
+    <div class="testimonials">
+        <div class="testimonial active">
+            <blockquote>"Best adobo and pork skewers around! Living in north county where there's not a lot of good Filipino food, I'm relieved to have come across this delicious spot."</blockquote>
+            <cite>Erica M. — San Diego</cite>
+        </div>
+        <div class="testimonial">
+            <blockquote>"The adobo was delicious! We had four pieces of adobo, some lumpia, and the banana dessert. They were all super tasty. We will definitely be back."</blockquote>
+            <cite>Lorna C. — San Diego</cite>
+        </div>
+        <div class="testimonial">
+            <blockquote>"Their turon was good — I think they even have jackfruit in it! The other food items looked tasty. Seems popular and pricing isn't bad either."</blockquote>
+            <cite>Dung N. — San Diego</cite>
+        </div>
+        <div class="dots">
+            <button class="dot active" data-i="0"></button>
+            <button class="dot" data-i="1"></button>
+            <button class="dot" data-i="2"></button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p class="footer-cta">Come Visit Us</p>
+    <div class="footer-contact">
+        <p>Chula Vista, CA</p>
+        <p><a href="mailto:info@gabinascuisine.com">info@gabinascuisine.com</a></p>
+        <p><a href="tel:6195004884">619.500.4884</a></p>
+    </div>
+</footer>
+
+<script>
+const slides = document.querySelectorAll('.testimonial');
+const dots = document.querySelectorAll('.dot');
+let current = 0;
+let timer;
+
+function show(i) {
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+    current = i;
+}
+
+function next() {
+    show((current + 1) % slides.length);
+}
+
+function start() {
+    timer = setInterval(next, 5000);
+}
+
+dots.forEach(d => d.addEventListener('click', () => {
+    clearInterval(timer);
+    show(+d.dataset.i);
+    start();
+}));
+
+start();
+</script>
+
+</body>
+</html>
